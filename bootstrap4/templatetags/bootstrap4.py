@@ -314,6 +314,10 @@ def bootstrap_javascript(jquery='falsy'):
     # List of JS tags to include
     javascript_tags = []
 
+    # If argument is not passed, make sure to settings
+    if jquery == 'falsy' and get_bootstrap_setting('include_jquery'):
+        jquery = 'slim'
+
     # Include jQuery if the option is passed
     if jquery != 'falsy':
         javascript_tags.append(bootstrap_jquery(jquery=jquery))
