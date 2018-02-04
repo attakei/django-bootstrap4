@@ -234,6 +234,13 @@ class MediaTest(TestCase):
             render_template_with_bootstrap('{% bootstrap_javascript %}')
         )
 
+    @override_settings(BOOTSTRAP4={'include_jquery': 'full'})
+    def test_bootstrap_js_with_jquery_full_by_settings(self):
+        self.assertInHTML(
+            self.expected_js('jquery'),
+            render_template_with_bootstrap('{% bootstrap_javascript %}')
+        )
+
     def test_bootstrap_css_tag(self):
         html = render_template_with_form('{% bootstrap_css %}').strip()
         self.assertInHTML(self.expected_css('css'), html)
